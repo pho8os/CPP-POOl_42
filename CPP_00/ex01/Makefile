@@ -1,4 +1,4 @@
-NAME = Megaphone
+NAME = Megakhroztk
 
 CPP = c++
 
