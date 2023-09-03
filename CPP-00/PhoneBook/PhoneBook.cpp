@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 20:30:02 by absaid            #+#    #+#             */
-/*   Updated: 2023/09/02 09:46:25 by absaid           ###   ########.fr       */
+/*   Updated: 2023/09/03 09:06:24 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ std::string style_word(std::string str)
 
 void print_contacts(Contact &a, int index)
 {
-	std::cout << "|" << std::setw(10) << index << "|";
-	std::cout << std::setw(10) << style_word(a.get_FirstName()) << "|";
-	std::cout << std::setw(10) << style_word(a.get_LastName()) << "|";
-	std::cout <<  std::setw(10) << style_word(a.get_NickName()) << "|" << std::endl;
+	std::cout << HCYN << "|" << HWHT << std::setw(10) << index << HCYN << "|" << RESET;
+	std::cout << HWHT << std::setw(10) << style_word(a.get_FirstName()) << HCYN << "|" << RESET;
+	std::cout << HWHT << std::setw(10) << style_word(a.get_LastName()) << HCYN << "|" << RESET;
+	std::cout << HWHT <<  std::setw(10) << style_word(a.get_NickName()) << HCYN << "|" << RESET << std::endl;
 }
 
 void show_my_contact(Contact a)
@@ -102,6 +102,6 @@ void Phonebook::show_contact()
 				break;
 			std::cout << HYEL << "ENTER A VALID INDEX!!" << RESET << std::endl;
 		}
+		show_my_contact(this->_contacts[i]);
 	}
-	show_my_contact(this->_contacts[i]);
 }
