@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 20:30:02 by absaid            #+#    #+#             */
-/*   Updated: 2023/09/03 09:06:24 by absaid           ###   ########.fr       */
+/*   Updated: 2023/09/03 09:21:03 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void set_element(void (Contact::*f)(std::string), std::string prompt,Contact &a)
 	std::string line;
 	while(std::cin.good())
 	{
-		std::cout << HGRN << prompt << RESET;
+		std::cout << prompt;
 		std::getline(std::cin, line);
 		if(std::cin.eof())
 			check_eof();
@@ -37,11 +37,10 @@ void set_element(void (Contact::*f)(std::string), std::string prompt,Contact &a)
 void set_contact(Contact &a)
 {
 	std::string line;
-
-	set_element(&Contact::set_FirstName,"First name: ",a);
-	set_element(&Contact::set_LastName,"Last name: ",a);
-	set_element(&Contact::set_NickName,"Nick name: ",a);
-	set_element(&Contact::set_PhoneNumber,"Phone Number: ",a);
+	set_element(&Contact::set_FirstName,"First name : ",a);
+	set_element(&Contact::set_LastName,"Last name : ",a);
+	set_element(&Contact::set_NickName,"Nick name : ",a);
+	set_element(&Contact::set_PhoneNumber,"Phone Number : ",a);
 	set_element(&Contact::set_DarkestSecret,"Darkest secret : ",a);
 }
 
@@ -70,11 +69,11 @@ void print_contacts(Contact &a, int index)
 
 void show_my_contact(Contact a)
 {
-	std::cout << HMAG << "First Name : " << a.get_FirstName() << RESET << std::endl;
-	std::cout << HMAG << "Last Name : " << a.get_LastName() << RESET << std::endl;
-	std::cout <<  HMAG << "Nick Name : " << a.get_NickName() << RESET << std::endl;
-	std::cout <<  HMAG << "Phone Number : " << a.get_PhoneNumber() << RESET << std::endl;
-	std::cout <<  HMAG << "Darkest secret : " << a.get_DarkestSecret() << RESET << std::endl;
+	std::cout << "First Name : " << a.get_FirstName() <<  std::endl;
+	std::cout << "Last Name : " << a.get_LastName() <<  std::endl;
+	std::cout <<  "Nick Name : " << a.get_NickName() <<  std::endl;
+	std::cout <<  "Phone Number : " << a.get_PhoneNumber() <<  std::endl;
+	std::cout <<  "Darkest secret : " << a.get_DarkestSecret() <<  std::endl;
 }
 
 void Phonebook::show_contact()
@@ -89,9 +88,9 @@ void Phonebook::show_contact()
 	std::cout << HCYN << "+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_+" << RESET << std::endl;
 	if(this->index > 0)
 	{	
-		std::cout << HRED << "choose ur index : " << RESET << std ::endl;
 		while(std::cin.good())
 		{
+			std::cout << HRED << "Choose a valid INDEX : " << RESET;
 			std::string a;
 			std::getline(std::cin, a);
 			if(std::cin.eof())

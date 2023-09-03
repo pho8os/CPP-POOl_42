@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 16:08:27 by absaid            #+#    #+#             */
-/*   Updated: 2023/09/02 09:27:42 by absaid           ###   ########.fr       */
+/*   Updated: 2023/09/03 09:12:01 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main()
 {
 	Phonebook contacts;
 	std::string ptr;
-	std::cout << HBLK << "Hi, This Is A Phonebook Commands : ADD , SEARCH, EXIT" << RESET << std::endl;
+	std::cout << HBLK << "Phonebook Commands : ADD , SEARCH, EXIT" << RESET << std::endl;
 	while(std::cin.good())
 	{
 		std::cin.clear();
