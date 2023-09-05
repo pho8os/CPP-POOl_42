@@ -4,7 +4,7 @@ GREEN 		= \033[1;32m
 CC			= c++
 FLAGS		= -Wall -Wextra -Werror -std=c++98
 OBJDIR 		= .obj
-FILES		= megaphone
+FILES		= MegaPhone
 SRC			= $(FILES:=.cpp)
 OBJ			= $(addprefix $(OBJDIR)/, $(FILES:=.o))
 

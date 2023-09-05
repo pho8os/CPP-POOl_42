@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 20:30:02 by absaid            #+#    #+#             */
-/*   Updated: 2023/09/03 09:21:03 by absaid           ###   ########.fr       */
+/*   Updated: 2023/09/03 15:56:44 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void show_my_contact(Contact a)
 void Phonebook::show_contact()
 {
 	int i = -1;
-	int j = (this->index > 8) * 8 + (this->index < 8) * this->index;
+	int j = (this->index >= 8) * 8 + (this->index < 8) * this->index;
 	std::cout << HCYN << "+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_+" << RESET <<std::endl;
 	std::cout << HCYN << "|     INDEX|FIRST NAME| LAST NAME| NICK NAME|" << RESET << std::endl;
 	std::cout << HCYN << "+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_+" << RESET << std::endl;
