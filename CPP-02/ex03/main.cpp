@@ -6,25 +6,32 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:25:35 by absaid            #+#    #+#             */
-/*   Updated: 2023/09/11 13:26:56 by absaid           ###   ########.fr       */
+/*   Updated: 2023/09/13 19:08:39 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "Point.hpp"
 
-int main( void ) {
-Fixed a;
-Fixed const b( 10 );
-Fixed const c( 42.42f );
-Fixed const d( b );
-a = Fixed( 1234.4321f );
-std::cout << "a is " << a << std::endl;
-std::cout << "b is " << b << std::endl;
-std::cout << "c is " << c << std::endl;
-std::cout << "d is " << d << std::endl;
-std::cout << "a is " << a.toInt() << " as integer" << std::endl;
-std::cout << "b is " << b.toInt() << " as integer" << std::endl;
-std::cout << "c is " << c.toInt() << " as integer" << std::endl;
-std::cout << "d is " << d.toInt() << " as integer" << std::endl;
-return 0;
+int main(void) {
+
+  {
+    Point a((7), (7));
+    Point b((11), (1));
+    Point c((2), (2));
+    Point p((7), (3));
+    if (bsp(a, b, c, p))
+      std::cout << "true" << std::endl;
+    else
+      std::cout << "false" << std::endl;
+  }
+  {
+    Point a((7), (7));
+    Point b((11), (1));
+    Point c((2), (2));
+    Point p((0), (0));
+    if (bsp(a, b, c, p))
+      std::cout << "true" << std::endl;
+    else
+      std::cout << "false" << std::endl;
+  }
 }
