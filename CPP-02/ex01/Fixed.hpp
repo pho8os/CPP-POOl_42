@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:05:40 by absaid            #+#    #+#             */
-/*   Updated: 2023/09/11 15:27:51 by absaid           ###   ########.fr       */
+/*   Updated: 2023/09/13 20:26:31 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,6 @@ class Fixed
         Fixed(const int var);
         Fixed(const float var);
         Fixed &operator=(const Fixed &obj);
-        Fixed &operator+(const Fixed &obj);
-        Fixed &operator-(const Fixed &obj);
-        Fixed &operator*(const Fixed &obj);
-        Fixed &operator/(const Fixed &obj);
-        bool operator==(const Fixed &obj);
-        bool operator!=(const Fixed &obj);
-        bool operator>(const Fixed &obj);
-        bool operator>=(const Fixed &obj);
-        bool operator<(const Fixed &obj);
-        bool operator<=(const Fixed &obj);
         ~Fixed();
         int getRawBits( void ) const;
         void setRawBits( int const raw );

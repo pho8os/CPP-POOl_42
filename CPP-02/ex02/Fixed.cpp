@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 12:41:16 by absaid            #+#    #+#             */
-/*   Updated: 2023/09/11 22:45:10 by absaid           ###   ########.fr       */
+/*   Updated: 2023/09/13 20:28:26 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,25 +55,25 @@ Fixed Fixed::operator--(int)
     return(this->_fixed--, old);
 }
 
-Fixed Fixed::operator+(const Fixed &obj)
+Fixed Fixed::operator+(const Fixed &obj) const
 {
     Fixed plus;
     return(plus._fixed = _fixed + obj._fixed , plus);
 }
 
-Fixed Fixed::operator-(const Fixed &obj)
+Fixed Fixed::operator-(const Fixed &obj) const
 {
     Fixed minus;
     return(minus._fixed = _fixed - obj._fixed, minus);
 }
 
-Fixed Fixed::operator*(const Fixed &obj)
+Fixed Fixed::operator*(const Fixed &obj) const
 {
     Fixed multip;
     return(multip._fixed = (_fixed * obj._fixed ) >> fracts , multip);
 }
 
-Fixed Fixed::operator/(const Fixed &obj)
+Fixed Fixed::operator/(const Fixed &obj) const
 {
     Fixed div;
     return(div._fixed = roundf(((float)_fixed / obj._fixed) * std::pow(2, fracts)), div);
