@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 20:42:56 by absaid            #+#    #+#             */
-/*   Updated: 2023/09/16 01:13:37 by absaid           ###   ########.fr       */
+/*   Updated: 2023/09/16 18:12:30 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class ClapTrap
         int getHitPoints() const;
         int getEnergyPoints() const ;
         int getAttackdmg() const;
-        /*----------------------MEMBERF------------------------*/
+        /*----------------------MEMBERMITOUS------------------------*/
         void attack(const std::string& target) ;
         void takeDamage(unsigned int amount);
         void beRepaired(unsigned int amount);

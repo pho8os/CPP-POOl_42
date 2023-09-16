@@ -6,26 +6,26 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 06:39:47 by absaid            #+#    #+#             */
-/*   Updated: 2023/09/16 08:08:18 by absaid           ###   ########.fr       */
+/*   Updated: 2023/09/16 18:16:55 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
+#include "ClapTrap.hpp"
 
-DiamondTrap::DiamondTrap() : ClapTrap(), ScavTrap(), FragTrap() {
+DiamondTrap::DiamondTrap() : ClapTrap( "Default_clap_name")  {
 
   std::cout << "DiamondTrap : Default Constructor Called" << std::endl;
-  this->Name = "Default_clap_name";
-  this->_name = "Default";
+  this->Name = "Default";
   this->HitPoints = FragTrap::HitPoints;
   this->EnergyPoints = ScavTrap::EnergyPoints;
   this->Attackdmg = FragTrap::Attackdmg;
 }
 
 DiamondTrap::DiamondTrap(std::string Name)
-    : ClapTrap(Name + "_clap_name"), ScavTrap(Name), FragTrap(Name) {
+    : ClapTrap(Name + "_clap_name") {
   std::cout << "DiamondTrap : Name Constructor Called" << std::endl;
-  this->_name = Name;
+  this->Name = Name;
   this->HitPoints = FragTrap::HitPoints;
   this->EnergyPoints = ScavTrap::EnergyPoints;
   this->Attackdmg = FragTrap::Attackdmg;
@@ -53,5 +53,5 @@ void DiamondTrap::attack(const std::string &target) {
 }
 
 void DiamondTrap::whoAmI() {
-  std::cout << "DiamondTrap : "<< this->_name << " steps into the light." << std::endl;
+  std::cout << "DiamondTrap : "<< this->Name << " " << ClapTrap::Name << " steps into the light." << std::endl;
 }

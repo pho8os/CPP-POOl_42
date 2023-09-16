@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 06:23:21 by absaid            #+#    #+#             */
-/*   Updated: 2023/09/16 08:13:25 by absaid           ###   ########.fr       */
+/*   Updated: 2023/09/16 18:15:01 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 class DiamondTrap : public ScavTrap,public FragTrap
 {
     private:
-        std::string _name;
+        std::string Name;
     public:
         DiamondTrap();
         ~DiamondTrap();
