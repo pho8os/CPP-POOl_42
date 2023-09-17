@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 16:41:05 by absaid            #+#    #+#             */
-/*   Updated: 2023/09/16 09:24:55 by absaid           ###   ########.fr       */
+/*   Updated: 2023/09/17 06:28:51 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,7 @@ int main()
     phobos.attack(deimos.getName());
     deimos.takeDamage(phobos.getAttackdmg());
     phobos.highFivesGuys();
+    DiamondTrap c = phobos;
+    c.whoAmI();
 
 }
