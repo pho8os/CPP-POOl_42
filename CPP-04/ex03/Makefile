@@ -1,12 +1,12 @@
-NAME		= Animal
+NAME		= AMateria
 GREY 		= \033[1;30m
 CC			= c++
-FLAGS		= -Wall -Wextra -Werror -std=c++98
+FLAGS		= -Wall -Wextra -Werror -std=c++98 
 OBJDIR 		= .obj
-FILES		= AMateria Cure Ice main   
+FILES		= AMateria Character Cure Ice MateriaSource main   
 SRC			= $(FILES:=.cpp)
 OBJ			= $(addprefix $(OBJDIR)/, $(FILES:=.o))
-HEADER		= AMateria.hpp Cure.hpp Ice.hpp 
+HEADER		= AMateria.hpp Character.hpp Cure.hpp ICharacter.hpp IMateriaSource.hpp Ice.hpp MateriaSource.hpp 
 
 
 all: $(NAME)
@@ -26,7 +26,7 @@ clean:
 
 fclean: clean
 	@rm -rf  $(NAME)
-	@echo  "$(GREY) 👾 Deleting Animal."
+	@echo  "$(GREY) 👾 Deleting AMateria."
 
 re: fclean all
 .PHONY: all clean fclean re
