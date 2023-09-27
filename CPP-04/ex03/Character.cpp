@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 05:53:25 by absaid            #+#    #+#             */
-/*   Updated: 2023/09/26 10:33:51 by absaid           ###   ########.fr       */
+/*   Updated: 2023/09/27 21:30:41 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,21 @@ Character::Character(const std::string &name) : name(name) {
     this->ability[i] = NULL;
 }
 
-Character::Character(const Character &obj) { *this = obj; }
+Character::Character(const Character &obj) { 
+  *this = obj; 
+  }
 
 Character &Character::operator=(const Character &obj) {
   this->name = obj.getName();
   for (int i = 0; i < 4; i++) {
+    delete this->ability[i];
     this->ability[i] = NULL;
+  }
+  for (int i = 0; i < 4; i++) {
     if (obj.ability[i])
       this->ability[i] = obj.ability[i]->clone();
   }
+  std::cout << "here" << std::endl;
   return (*this);
 }
 

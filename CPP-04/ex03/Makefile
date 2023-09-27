@@ -12,8 +12,8 @@ HEADER		= AMateria.hpp Character.hpp Cure.hpp ICharacter.hpp IMateriaSource.hpp 
 all: $(NAME)
 
 $(NAME): $(OBJ) $(HEADER)
-	@$(CC) $(OBJ) -o $(NAME)
-	@echo "$(GREY) 🦠 Animal!!"
+	@$(CC) $(OBJ) -o $(NAME) 
+	@echo "$(GREY) 😵‍💫 AMateria!!"
 
 $(OBJDIR)/%.o: %.cpp $(HEADER)
 	@mkdir -p $(dir $@)

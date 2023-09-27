@@ -9,7 +9,10 @@ MateriaSource::MateriaSource(const MateriaSource &obj) { *this = obj; }
 
 MateriaSource &MateriaSource::operator=(const MateriaSource &obj) {
   for (int i = 0; i < 4; i++) {
+    delete this->ability[i];
     this->ability[i] = NULL;
+  }
+  for (int i = 0; i < 4; i++) {
     if (obj.ability[i])
       this->ability[i] = obj.ability[i]->clone();
   }
