@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 05:53:25 by absaid            #+#    #+#             */
-/*   Updated: 2023/09/28 08:56:04 by absaid           ###   ########.fr       */
+/*   Updated: 2023/09/28 09:05:25 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ Character &Character::operator=(const Character &obj) {
     if (obj.ability[i])
       this->ability[i] = obj.ability[i]->clone();
   }
-  std::cout << "here" << std::endl;
   return (*this);
 }
 

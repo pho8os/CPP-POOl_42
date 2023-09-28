@@ -26,7 +26,7 @@ MateriaSource::~MateriaSource() {
 
 void MateriaSource::learnMateria(AMateria *M) {
   for (int i = 0; i < 4; i++) {
-    if (!this->ability[i]) {
+    if (!this->ability[i] && M) {
       this->ability[i] = M->clone();
       break;
     }

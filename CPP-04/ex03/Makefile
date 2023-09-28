@@ -1,7 +1,7 @@
 NAME		= AMateria
 GREY 		= \033[1;30m
 CC			= c++
-FLAGS		= -Wall -Wextra -Werror -std=c++98 
+FLAGS		= -Wall -Wextra -Werror  -std=c++98 
 OBJDIR 		= .obj
 FILES		= AMateria Character Cure Ice MateriaSource main   
 SRC			= $(FILES:=.cpp)
