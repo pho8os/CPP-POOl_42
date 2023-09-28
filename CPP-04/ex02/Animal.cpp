@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 20:51:54 by absaid            #+#    #+#             */
-/*   Updated: 2023/09/21 09:04:03 by absaid           ###   ########.fr       */
+/*   Updated: 2023/09/28 09:05:37 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,6 @@ AAnimal &AAnimal::operator=(const AAnimal &obj)
     if(this != &obj)
         this->type = obj.type;
     return(*this);
-}
-
-void AAnimal::makeSound() const
-{
-    std::cout << "Animalsound" << std::endl;
 }
 
 std::string AAnimal::getType() const
