@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 22:16:26 by absaid            #+#    #+#             */
-/*   Updated: 2023/09/23 09:56:56 by absaid           ###   ########.fr       */
+/*   Updated: 2023/09/29 09:31:41 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,3 @@ Cat &Cat::operator=(const Cat &obj) {
 }
 
 void Cat::makeSound() const { std::cout << "Meeooow" << std::endl; }
-
-std::string Cat::getBrainIdea(int index) const {
-  return (this->brain->getidea(index));
-}

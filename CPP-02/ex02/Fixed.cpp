@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 12:41:16 by absaid            #+#    #+#             */
-/*   Updated: 2023/09/13 20:28:26 by absaid           ###   ########.fr       */
+/*   Updated: 2023/09/15 19:16:07 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ Fixed Fixed::operator*(const Fixed &obj) const
 Fixed Fixed::operator/(const Fixed &obj) const
 {
     Fixed div;
-    return(div._fixed = roundf(((float)_fixed / obj._fixed) * std::pow(2, fracts)), div);
+    return(div._fixed = roundf(((float)_fixed / obj._fixed) * (1 << fracts)), div);
 }
 
 bool Fixed::operator==(const Fixed &obj) const
@@ -141,7 +141,7 @@ int Fixed::toInt() const
 
 float Fixed::toFloat() const
 {
-    return((float)_fixed * std::pow(2, fracts * -1));
+    return((float)_fixed / (1 << fracts));
 }
 
 Fixed &Fixed::max(Fixed &a, Fixed &b)

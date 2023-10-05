@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 02:49:09 by absaid            #+#    #+#             */
-/*   Updated: 2023/09/16 09:15:13 by absaid           ###   ########.fr       */
+/*   Updated: 2023/09/17 06:16:36 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,12 @@ FragTrap::FragTrap(const FragTrap &obj) {
 }
 
 FragTrap &FragTrap::operator=(const FragTrap &obj) {
-  this->Name = obj.getName();
-  this->EnergyPoints = obj.getEnergyPoints();
-  this->HitPoints = obj.getHitPoints();
-  this->Attackdmg = obj.getAttackdmg();
+  if (this != &obj) {
+    this->Name = obj.getName();
+    this->EnergyPoints = obj.getEnergyPoints();
+    this->HitPoints = obj.getHitPoints();
+    this->Attackdmg = obj.getAttackdmg();
+  }
   return (*this);
 }
 

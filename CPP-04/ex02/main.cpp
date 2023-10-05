@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 23:01:15 by absaid            #+#    #+#             */
-/*   Updated: 2023/09/21 09:04:33 by absaid           ###   ########.fr       */
+/*   Updated: 2023/09/29 09:34:22 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ const AAnimal* i = new Cat();
 i->makeSound();
 j->makeSound();
 
+std::cout << i->getBrainIdea(0) << std::endl;
+std::cout << j->getBrainIdea(69) << std::endl;
 
-delete j;//should not create a leak
+delete j;
 delete i;
 
 return 0;

@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 10:23:26 by absaid            #+#    #+#             */
-/*   Updated: 2023/09/05 10:36:18 by absaid           ###   ########.fr       */
+/*   Updated: 2023/09/05 11:52:55 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ bool	Account::makeWithdrawal( int withdrawal )
     _amount -= withdrawal;
     std::cout << withdrawal<< ";amount:" << _amount << ";nb_withdrawals:" << _nbWithdrawals << std::endl ;
     _totalAmount -= withdrawal;
-
     return(true);   
 }
 

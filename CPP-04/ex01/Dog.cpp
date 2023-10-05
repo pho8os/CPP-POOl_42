@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 23:00:49 by absaid            #+#    #+#             */
-/*   Updated: 2023/09/27 21:44:26 by absaid           ###   ########.fr       */
+/*   Updated: 2023/09/29 09:31:52 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,3 @@ Dog &Dog::operator=(const Dog &obj) {
 }
 
 void Dog::makeSound() const { std::cout << "Woof!" << std::endl; }
-
-std::string Dog::getBrainIdea(int index) const {
-  return (this->brain->getidea(index));
-}

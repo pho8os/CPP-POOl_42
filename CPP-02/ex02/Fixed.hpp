@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:05:40 by absaid            #+#    #+#             */
-/*   Updated: 2023/09/13 21:13:25 by absaid           ###   ########.fr       */
+/*   Updated: 2023/09/14 11:23:15 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ class Fixed
         static const int fracts;
     public:
         static Fixed &max(Fixed &a, Fixed &b);
-        static  Fixed &max(const Fixed &a, const Fixed &b);
+        static Fixed &max(const Fixed &a, const Fixed &b);
         static Fixed &min(Fixed &a, Fixed &b);
-        static  Fixed &min(const Fixed &a, const Fixed &b);
+        static Fixed &min(const Fixed &a, const Fixed &b);
         Fixed();
         Fixed(const Fixed &obj);
         Fixed(const int var);

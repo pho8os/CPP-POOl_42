@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 18:54:25 by absaid            #+#    #+#             */
-/*   Updated: 2023/09/16 09:16:41 by absaid           ###   ########.fr       */
+/*   Updated: 2023/09/19 02:17:23 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,13 @@ ScavTrap::ScavTrap(const ScavTrap &obj) {
 }
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &obj) {
-  this->Name = obj.getName();
-  this->GuardGate = obj.GuardGate;
-  this->EnergyPoints = obj.getEnergyPoints();
-  this->HitPoints = obj.getHitPoints();
-  this->Attackdmg = obj.getAttackdmg();
+  if (this != &obj) {
+    this->Name = obj.getName();
+    this->GuardGate = obj.GuardGate;
+    this->EnergyPoints = obj.getEnergyPoints();
+    this->HitPoints = obj.getHitPoints();
+    this->Attackdmg = obj.getAttackdmg();
+  }
   return (*this);
 }
 
@@ -70,7 +72,6 @@ void ScavTrap::takeDamage(unsigned int amount) {
   } else
     std::cout << " but remains standing." << std::endl;
 }
-
 void ScavTrap::guardGate() {
   if (this->EnergyPoints <= 0 || this->HitPoints <= 0)
     return;

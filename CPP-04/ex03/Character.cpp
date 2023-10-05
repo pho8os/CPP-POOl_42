@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 05:53:25 by absaid            #+#    #+#             */
-/*   Updated: 2023/09/28 09:05:25 by absaid           ###   ########.fr       */
+/*   Updated: 2023/09/29 09:10:49 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,11 @@ void Character::equip(AMateria *m) {
       if (m == ability[j])
         return;
     }
-    this->ability[i] = m;
     if (!this->ability[i])
+    {
+      ability[i] = m;
       break;
+    }
   }
 }
 
