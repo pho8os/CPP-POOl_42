@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AForm.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                           :+:      :+:    :+: */
 /*                                                    +:+ +:+         +:+     */
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -16,20 +16,20 @@ AForm::AForm() : name("Default") {
   sign = false;
   signGrade = 1;
   execGrade = 1;
-  std::cout << "AForm : Default Constructor Called" << std::endl;
+  // std::cout << "AForm : Default Constructor Called" << std::endl;
 }
 
-AForm::~AForm() { std::cout << "AForm : Destructor Called" << std::endl; }
+// AForm::~AForm() { std::cout << "AForm : Destructor Called" << std::endl; }
 
 AForm::AForm(const AForm &obj)
     : name(obj.name), sign(obj.sign), signGrade(obj.signGrade),
       execGrade(obj.execGrade) {
-  std::cout << "AForm : Copy Constructor Called" << std::endl;
+  // std::cout << "AForm : Copy Constructor Called" << std::endl;
 }
 
 AForm::AForm(const std::string &name, int signGrade, int execGrade)
     : name(name), sign(false), signGrade(signGrade), execGrade(execGrade) {
-  std::cout << "AForm : Parametrized Constructor Called" << std::endl;
+  // std::cout << "AForm : Parametrized Constructor Called" << std::endl;
   if (signGrade < 1 || execGrade < 1)
     throw(GradeTooHighException());
   if (signGrade > 150 || execGrade > 150)
@@ -48,7 +48,19 @@ void AForm::beSigned(const Bureaucrat &mark) {
 }
 
 std::string AForm::getName() const { return (this->name); }
+
+int AForm::getExecGrade() const { return (this->execGrade); }
+
+int AForm::getSign() const { return (this->sign); }
+
 int AForm::getSignGrade() const { return (this->signGrade); }
+
+void AForm::setExecGrade(int grade) {this->execGrade = grade;}
+
+void AForm::setSignGrade(int grade) { this->signGrade = grade;}
+
+void AForm::setSign(bool sign) { this->sign = sign;}
+
 
 const char *AForm::GradeTooHighException::what() const throw() {
   return ("Grade Too High");

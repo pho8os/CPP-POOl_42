@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 11:29:50 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/05 15:59:51 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/10 07:57:51 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ public:
   void increment();
   void decrement();
   void signForm(const AForm &form);
+  void executeForm(AForm const &form);
   class GradeTooHighException : public std::exception {
   public:
     const char *what() const throw();

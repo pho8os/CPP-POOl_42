@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 12:04:04 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/05 16:05:45 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/07 15:26:46 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void Bureaucrat::signForm(const Form &form) {
   if(form.getSignGrade() >= this->grade)
     std::cout << this->name << " signed " << form.getName() << std::endl;
   else
-    std::cout << this->name << " couldn’t sign " << form.getName() << " because the grade doesn't match." << std::endl;
+    std::cout << this->name << " couldn't sign " << form.getName() << " because the grade doesn't match." << std::endl;
 }
 
 // <bureaucrat> couldn’t sign <form> because <reason>
