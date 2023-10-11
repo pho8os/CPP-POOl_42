@@ -3,10 +3,10 @@ GREY 		= \033[1;30m
 CC			= c++
 FLAGS		= -Wall -Wextra -Werror -std=c++98
 OBJDIR 		= .obj
-FILES		=  AForm Bureaucrat PresidentialPardonForm RobotomyRequestForm ShrubberyCreationForm main 
+FILES		=  AForm Bureaucrat PresidentialPardonForm RobotomyRequestForm ShrubberyCreationForm  Intern main 
 SRC			= $(FILES:=.cpp)
 OBJ			= $(addprefix $(OBJDIR)/, $(FILES:=.o))
-HEADER		= AForm.hpp Bureaucrat.hpp PresidentialPardonForm.hpp RobotomyRequestForm.hpp ShrubberyCreationForm.hpp 
+HEADER		= AForm.hpp Bureaucrat.hpp PresidentialPardonForm.hpp RobotomyRequestForm.hpp ShrubberyCreationForm.hpp Intern.hpp
 
 
 all: $(NAME)

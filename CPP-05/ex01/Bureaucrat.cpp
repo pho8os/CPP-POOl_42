@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 12:04:04 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/07 15:26:46 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/11 21:44:54 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,14 @@ void Bureaucrat::decrement() {
     throw(GradeTooLowException());
 }
 
-void Bureaucrat::signForm(const Form &form) {
-  if(form.getSignGrade() >= this->grade)
+void Bureaucrat::signForm(Form &form) {
+  try {
+    form.beSigned(*this);
     std::cout << this->name << " signed " << form.getName() << std::endl;
-  else
-    std::cout << this->name << " couldn't sign " << form.getName() << " because the grade doesn't match." << std::endl;
+  } catch (std::exception &e) {
+    std::cout << this->name << " couldn't sign " << form.getName()
+              << " because " << e.what() << std::endl;
+  }
 }
 
 // <bureaucrat> couldn’t sign <form> because <reason>

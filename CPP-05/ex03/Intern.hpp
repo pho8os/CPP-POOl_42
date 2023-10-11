@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/10 00:19:16 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/11 21:39:58 by absaid           ###   ########.fr       */
+/*   Created: 2023/10/11 22:08:27 by absaid            #+#    #+#             */
+/*   Updated: 2023/10/11 22:32:42 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "AForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
-class ShrubberyCreationForm : public AForm
-{
-    public:
-        ShrubberyCreationForm();
-        ShrubberyCreationForm(std::string const &name);
-        ShrubberyCreationForm(const ShrubberyCreationForm &obj);
-        ShrubberyCreationForm &operator=(const ShrubberyCreationForm &obj);
-        ~ShrubberyCreationForm();
-        void execute(Bureaucrat const & executor) const;
+class Intern {
+public:
+  Intern();
+  Intern(const Intern &obj);
+  Intern &operator=(const Intern &obj);
+  ~Intern();
+  AForm *makeForm(std::string formtype, std::string form);
+  class WrongFormException : public std::exception {
+  public:
+    const char *what() const throw();
+  };
 };

@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:39:45 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/05 00:55:04 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/11 04:12:09 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ Form &Form::operator=(const Form &obj) {
 }
 
 void Form::beSigned(const Bureaucrat &mark) {
-  if (this->signGrade > mark.getGrade())
+  if (this->signGrade >= mark.getGrade())
     this->sign = true;
+  else
+    throw(GradeTooLowException());
 }
 
 std::string Form::getName() const { return (this->name); }

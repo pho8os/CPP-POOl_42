@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:27:23 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/05 00:53:47 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/11 04:23:07 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 #include <exception>
 int main() {
   try{
-    Form f("Wri9a", 3, 4);
+    Form f("Contrat", 3, 4);
     Bureaucrat mark("Phobos", 4);
-    f.beSigned(mark);
+    std::cout << mark << std::endl;
+    mark.signForm(f);
+    mark.increment();
+    std::cout << mark << std::endl;
     mark.signForm(f);
   }
   catch(std::exception &e)
