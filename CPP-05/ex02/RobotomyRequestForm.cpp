@@ -6,12 +6,14 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 20:10:19 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/11 21:51:13 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/12 05:08:56 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 #include "AForm.hpp"
+#include <cstddef>
+#include <ctime>
 
 RobotomyRequestForm::RobotomyRequestForm() : AForm("Default", 72, 45) {}
 
@@ -33,9 +35,8 @@ RobotomyRequestForm::~RobotomyRequestForm() {}
 
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const {
   if (executor.getGrade() <= this->getExecGrade()) {
-    static bool rand;
-    rand = !rand;
-    if (rand)
+    srand(time(NULL));
+    if (rand() % 2)
       std::cout << executor.getName() << " has been robotomized successfully."
                 << std::endl;
     else

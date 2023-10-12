@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:39:45 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/11 04:12:09 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/12 05:02:37 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,25 @@ void Form::beSigned(const Bureaucrat &mark) {
 
 std::string Form::getName() const { return (this->name); }
 int Form::getSignGrade() const { return (this->signGrade); }
+int Form::getExecGrade() const { return (this->execGrade); }
+
+bool Form::getSign() const { return (this->sign); }
+
 
 const char *Form::GradeTooHighException::what() const throw() {
   return ("Grade Too High");
 }
 const char *Form::GradeTooLowException::what() const throw() {
   return ("Grade Too Low");
+}
+
+std::ostream &operator<<(std::ostream &output, const Form &obj) {
+  output << "Form: " << obj.getName()
+         << " ,grade to be executed: " << obj.getExecGrade()
+         << " ,grade to be signed: " << obj.getSignGrade();
+  if (obj.getSign())
+    output << " , and it's signed.";
+  else
+    output << " , and it's not signed yet.";
+  return(output);
 }

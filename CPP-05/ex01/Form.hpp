@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:57:32 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/04 18:26:40 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/12 05:00:32 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ public:
 
   Form(const std::string &name, int signGrade, int execGrade);
   std::string getName() const;
+  int getExecGrade() const ;
   int getSignGrade() const ;
+  bool getSign() const ;
   void beSigned(const Bureaucrat &mark);
   /*-----------------------------------------------*/
   class GradeTooHighException : public std::exception {
@@ -44,3 +46,4 @@ public:
     const char *what() const throw();
   };
 };
+std::ostream &operator<<(std::ostream &output, const Form &obj);

@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 15:55:58 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/10 00:27:58 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/12 05:04:41 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,3 +54,4 @@ public:
     const char *what() const throw();
   };
 };
+std::ostream &operator<<(std::ostream &output, const AForm &obj);

@@ -6,14 +6,14 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 15:55:58 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/10 00:27:58 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/12 05:03:57 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <iostream>
 #include "Bureaucrat.hpp"
+#include <iostream>
 
 class Bureaucrat;
 
@@ -23,6 +23,7 @@ private:
   bool sign;
   int signGrade;
   int execGrade;
+
 public:
   AForm();
   AForm(const AForm &obj);
@@ -30,19 +31,17 @@ public:
   virtual ~AForm();
   AForm(const std::string &name, int signGrade, int execGrade);
 
-
   std::string getName() const;
-  int getSignGrade() const ;
-  int getExecGrade() const ;
-  int getSign() const ;
-  
+  int getSignGrade() const;
+  int getExecGrade() const;
+  bool getSign() const;
+
   void setSignGrade(int grade);
   void setExecGrade(int grade);
   void setSign(bool sign);
 
-
   void beSigned(const Bureaucrat &mark);
-  virtual void execute(Bureaucrat const & executor) const = 0;
+  virtual void execute(Bureaucrat const &executor) const = 0;
   /*-----------------------------------------------*/
   class GradeTooHighException : public std::exception {
   public:
@@ -54,3 +53,4 @@ public:
     const char *what() const throw();
   };
 };
+std::ostream &operator<<(std::ostream &output, const AForm &obj);

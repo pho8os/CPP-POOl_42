@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 11:29:50 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/11 04:06:00 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/12 05:00:43 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,4 @@ public:
     const char *what() const throw();
   };
 };
-
 std::ostream &operator<<(std::ostream &output, const Bureaucrat &obj);

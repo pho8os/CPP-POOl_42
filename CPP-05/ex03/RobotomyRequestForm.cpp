@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 20:10:19 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/12 00:45:08 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/12 05:17:26 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,8 @@ RobotomyRequestForm::~RobotomyRequestForm() {}
 
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const {
   if (executor.getGrade() <= this->getExecGrade()) {
-    static bool rand;
-    rand = !rand;
-    if (rand)
+    srand(time(NULL));
+    if (rand() % 2)
       std::cout << executor.getName() << " has been robotomized successfully."
                 << std::endl;
     else
