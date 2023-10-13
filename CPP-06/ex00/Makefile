@@ -13,7 +13,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ) $(HEADER)
 	@$(CC) $(OBJ) -o $(NAME)
-	@echo "$(GREY) 🎓 convert!!"
+	@echo "$(GREY) 🧮 convert!!"
 
 $(OBJDIR)/%.o: %.cpp $(HEADER)
 	@mkdir -p $(dir $@)
