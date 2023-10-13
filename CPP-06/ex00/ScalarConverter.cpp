@@ -6,13 +6,14 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 21:38:44 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/13 09:30:32 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/13 11:54:45 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 #include <cctype>
 #include <cstring>
+#include <string>
 
 bool isSpecial(std::string &s) {
   if (s == "nanf" || s == "inff")
@@ -65,6 +66,47 @@ bool isNumberValid(std::string &s) {
   return (0);
 }
 
+void printSpecial(std::string &s, int &c) {
+  if ((s == "inf" && !c) || (s == "nan" && c))
+    return (std::cout << "invalid arg" << std::endl, (void)0);
+  std::cout << "char: impossible" << std::endl;
+  std::cout << "int: impossible" << std::endl;
+  std::cout << "float: ";
+  (c == '-' && s == "inf") && (std::cout << "-", 0);
+  (c == '+' && s == "inf") && (std::cout << "+", 0);
+  std::cout << s << 'f' << std::endl;
+  std::cout << "double: ";
+  (c == '-' && s == "inf") && (std::cout << "-", 0);
+  (c == '+' && s == "inf") && (std::cout << "+", 0);
+  std::cout << s << std::endl;
+}
+
+void printNumber(std::string &s, int &sign) {
+  sign = (sign == '-') * -1 + !(sign == '-') * 1;
+  double d;
+  if (!isNumberValid(s))
+    d = s[0];
+  else
+    d = std::atof(s.c_str()) * sign;
+  char c = static_cast<char>(d);
+  float f = static_cast<float>(d);
+  float i = static_cast<int>(d);
+  std::cout << "char: ";
+  if (std::isprint(c))
+    std::cout << "\'" << c << "\'" << std::endl;
+  else
+    std::cout << "Non displayable" << std::endl;
+  std::cout << "int: " << i << std::endl;
+  float natural = 0;
+  if (modf(d, &natural)) {
+    std::cout << "float: " << f << "f" << std::endl;
+    std::cout << "float: " << d << std::endl;
+  } else {
+    std::cout << "float: " << f << ".0f" << std::endl;
+    std::cout << "double: " << d << ".0" << std::endl;
+  }
+}
+
 void ScalarConverter::convert(std::string &s) {
   int c = 0;
   if (s[0] == '+' || s[0] == '-') {
@@ -72,42 +114,9 @@ void ScalarConverter::convert(std::string &s) {
     s = s.substr(1, s.length());
   }
   if (isSpecial(s)) {
-    if ((s == "inf" && !c) || (s == "nan" && c))
-      return (std::cout << "invalid arg" << std::endl, (void)0);
-    std::cout << "char: impossible" << std::endl;
-    std::cout << "int: impossible" << std::endl;
-    std::cout << "float: ";
-    (c == '-' && s == "inf") && (std::cout << "-", 0);
-    (c == '+' && s == "inf") && (std::cout << "+", 0);
-    std::cout << s << 'f' << std::endl;
-    std::cout << "double: ";
-    (c == '-' && s == "inf") && (std::cout << "-", 0);
-    (c == '+' && s == "inf") && (std::cout << "+", 0);
-    std::cout << s << std::endl;
+    printSpecial(s, c);
   } else if (isNumberValid(s) || s.length() == 1) {
-    c = (c == '-') * -1 + !(c == '-') * 1;
-    double d;
-    if (!isNumberValid(s))
-      d = s[0];
-    else
-      d = std::atof(s.c_str()) * c;
-    char c = static_cast<char>(d);
-    float f = static_cast<float>(d);
-    float i = static_cast<int>(d);
-    std::cout << "char: ";
-    if (std::isprint(c))
-      std::cout << c << std::endl;
-    else
-      std::cout << "Non displayable" << std::endl;
-    std::cout << "int: " << i << std::endl;
-    if (s.find(".") != std::string::npos) {
-      std::cout << "float: " << f << "f" << std::endl;
-      std::cout << "float: " << d << std::endl;
-
-    } else {
-      std::cout << "float: " << f << ".0f" << std::endl;
-      std::cout << "double: " << d << ".0" << std::endl;
-    }
+    printNumber(s, c);
   } else {
     std::cout << "invalid arg" << std::endl;
   }
