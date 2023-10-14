@@ -6,13 +6,13 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 02:22:38 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/14 05:31:10 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/14 09:17:33 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Base.hpp"
 
-Base::~Base(){}
+Base::~Base() {}
 
 Base *generate() {
   srand(time(NULL));
@@ -45,14 +45,17 @@ void identify(Base &p) {
   try {
     A &a = dynamic_cast<A &>(p);
     return (std::cout << "A" << std::endl, (void)a);
-  } catch (std::bad_cast) {}
-  try {
-    B &b = dynamic_cast<B &>(p);
-    return (std::cout << "B" << std::endl, (void)b);
-  } catch (std::bad_cast) {}
-  try {
-    C &c = dynamic_cast<C &>(p);
-    return (std::cout << "C" << std::endl, (void)c);
-  } catch (std::bad_cast) {}
-  std::cout << "Unknown type" << std::endl;
+  } catch (std::bad_cast) {
+    try {
+      B &b = dynamic_cast<B &>(p);
+      return (std::cout << "B" << std::endl, (void)b);
+    } catch (std::bad_cast) {
+      try {
+        C &c = dynamic_cast<C &>(p);
+        return (std::cout << "C" << std::endl, (void)c);
+      } catch (std::bad_cast) {
+        std::cout << "Unknown type" << std::endl;
+      }
+    }
+  }
 }

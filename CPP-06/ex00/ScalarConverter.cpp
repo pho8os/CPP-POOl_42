@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 21:38:44 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/14 08:05:46 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/14 09:16:14 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void printNumber(std::string &s, int &sign) {
     std::cout << "\'" << c << "\'" << std::endl;
   else
   {
-    if(i < 128)
+    if(i > 127)
       std::cout << "overflow!!" << std::endl;
     else
       std::cout << "Non displayable" << std::endl;
