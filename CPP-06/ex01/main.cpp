@@ -5,31 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 21:30:06 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/13 13:19:04 by absaid           ###   ########.fr       */
+/*   Created: 2023/10/14 01:30:47 by absaid            #+#    #+#             */
+/*   Updated: 2023/10/14 01:43:54 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "ScalarConverter.hpp"
-#include "ScalarConverter.hpp"
-#include <cstdlib>
-#include<iostream>
-#include <string>
-void trim(std::string& s) {
-  while (s.begin() != s.end() && isspace(*s.begin())) 
-    s.erase(s.begin());
-  while (s.end() != s.begin() && isspace(*s.rbegin()))
-    s.pop_back();
-}
+#include "Serializer.hpp"
+#include <sys/_types/_uintptr_t.h>
 
-int main(int ac, char **av) {
-  (void)ac;
-  (void)av;
-  if (ac != 2)
-    return (std::cout << "error!" << std::endl, 1);
-  std::string a(av[1]);
-  trim(a);
-  if(!a.length())
-    return (std::cout << "Empty arg!!" << std::endl, 1);
-  ScalarConverter::convert(a);
+int main() {
+  Data s;
+  s.c = 'a';
+  s.i = 1;
+  std::cout << &s << std::endl;
+  uintptr_t uint = Serializer::serialize(&s);
+  std::cout << "0x" << std::hex << uint << std::endl;
+  std::cout << (Serializer::deserialize(uint))->c << "\t"
+            << (Serializer::deserialize(uint))->i << std::endl;
 }

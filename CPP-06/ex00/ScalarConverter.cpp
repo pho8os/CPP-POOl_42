@@ -6,13 +6,17 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 21:38:44 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/13 11:54:45 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/14 08:05:46 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+#include"float.h"
 #include <cctype>
+#include <cfloat>
+#include <cstdint>
 #include <cstring>
+#include <sstream>
 #include <string>
 
 bool isSpecial(std::string &s) {
@@ -28,6 +32,8 @@ bool isNumber(std::string &s) {
   int i = 0;
   if (s[0] == '+' || s[0] == '-')
     i++;
+  if(!s[i])
+    return false;
   for (int j = i; j < (int)s.length(); j++) {
     if (!std::isdigit(s[j])) {
       if (s[j] == '.' && !comma && std::isdigit(s[j + 1])) {
@@ -55,7 +61,10 @@ bool isNumberValid(std::string &s) {
     else
       return (false);
   }
-  test[0] = std::strtok((char *)s.c_str(), "e");
+  ptr = std::strtok((char *)s.c_str(), "e");
+  if(!ptr)
+    return(false);
+  test[0] = ptr;
   ptr = std::strtok(NULL, "e");
   if (std::strtok(NULL, "e") || (!ptr && check))
     return (false);
@@ -83,41 +92,58 @@ void printSpecial(std::string &s, int &c) {
 
 void printNumber(std::string &s, int &sign) {
   sign = (sign == '-') * -1 + !(sign == '-') * 1;
-  double d;
+  long double ld;
   if (!isNumberValid(s))
-    d = s[0];
+    ld = s[0];
   else
-    d = std::atof(s.c_str()) * sign;
+    ld = std::atof(s.c_str()) * sign;
+  double d = static_cast<double>(ld);
   char c = static_cast<char>(d);
   float f = static_cast<float>(d);
-  float i = static_cast<int>(d);
+  int i = static_cast<int>(d);
   std::cout << "char: ";
   if (std::isprint(c))
     std::cout << "\'" << c << "\'" << std::endl;
   else
-    std::cout << "Non displayable" << std::endl;
-  std::cout << "int: " << i << std::endl;
+  {
+    if(i < 128)
+      std::cout << "overflow!!" << std::endl;
+    else
+      std::cout << "Non displayable" << std::endl;
+  } 
+  std::cout << "int: ";
+  if (d > INT_MAX)
+    std::cout << "overflow!!" << std::endl;
+  else
+    std::cout << i << std::endl;
   float natural = 0;
   if (modf(d, &natural)) {
     std::cout << "float: " << f << "f" << std::endl;
-    std::cout << "float: " << d << std::endl;
+    std::cout << "double: " << d << std::endl;
   } else {
-    std::cout << "float: " << f << ".0f" << std::endl;
-    std::cout << "double: " << d << ".0" << std::endl;
+    std::cout << "float: ";
+    if(ld < FLT_MAX)
+      std::cout << f << ".0f" << std::endl;
+    else
+      std::cout << "Overflow!!" << std::endl;
+    std::cout << "double: ";
+    if(ld < DBL_MAX)
+      std::cout << d << ".0" << std::endl;
+    else
+      std::cout << "Overflow!!" << std::endl;
   }
 }
-
 void ScalarConverter::convert(std::string &s) {
   int c = 0;
-  if (s[0] == '+' || s[0] == '-') {
+  if ((s[0] == '+' || s[0] == '-') && s.length() > 1) {
     c = s[0];
     s = s.substr(1, s.length());
   }
-  if (isSpecial(s)) {
+  if (isSpecial(s)) 
     printSpecial(s, c);
-  } else if (isNumberValid(s) || s.length() == 1) {
+  else if (s.length() == 1 || isNumberValid(s)) 
     printNumber(s, c);
-  } else {
+  else {
     std::cout << "invalid arg" << std::endl;
   }
 }

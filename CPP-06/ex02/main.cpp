@@ -5,31 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 21:30:06 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/13 13:19:04 by absaid           ###   ########.fr       */
+/*   Created: 2023/10/14 02:44:48 by absaid            #+#    #+#             */
+/*   Updated: 2023/10/14 05:32:12 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "ScalarConverter.hpp"
-#include "ScalarConverter.hpp"
-#include <cstdlib>
-#include<iostream>
-#include <string>
-void trim(std::string& s) {
-  while (s.begin() != s.end() && isspace(*s.begin())) 
-    s.erase(s.begin());
-  while (s.end() != s.begin() && isspace(*s.rbegin()))
-    s.pop_back();
-}
+#include "Base.hpp"
+#include <unistd.h>
 
-int main(int ac, char **av) {
-  (void)ac;
-  (void)av;
-  if (ac != 2)
-    return (std::cout << "error!" << std::endl, 1);
-  std::string a(av[1]);
-  trim(a);
-  if(!a.length())
-    return (std::cout << "Empty arg!!" << std::endl, 1);
-  ScalarConverter::convert(a);
+int main()
+{
+    identify(*generate());
+    usleep(780000);
+    identify(generate());
 }
