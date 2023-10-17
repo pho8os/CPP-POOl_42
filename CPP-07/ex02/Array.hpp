@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 11:05:40 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/11 23:04:10 by absaid           ###   ########.fr       */
+/*   Created: 2023/10/15 13:25:26 by absaid            #+#    #+#             */
+/*   Updated: 2023/10/15 22:37:13 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,21 @@
 
 #include <iostream>
 
-class Fixed
+template<typename T>
+class Array
 {
     private:
-        int _fixed;
-        static const int fracts;
+       unsigned int  n;
+       T *elements;
     public:
-        Fixed();
-        Fixed(const Fixed &obj);
-        Fixed(const int var);
-        Fixed(const float var);
-        Fixed &operator=(const Fixed &obj);
-        ~Fixed();
-        int getRawBits( void ) const;
-        void setRawBits( int const raw );
-        float toFloat() const;
-        int toInt() const;
+        Array();
+        Array(unsigned int n);
+        Array(const Array &obj);
+        Array &operator=(const Array &obj);
+        T &operator[](const unsigned int &index);
+        ~Array();
+        unsigned int size();
+        
+         
 };
-std::ostream &operator<<(std::ostream &output, const Fixed &obj);
-
-Fixed a, b;
-
-a = b = c = d;
+#include "Array.tpp"

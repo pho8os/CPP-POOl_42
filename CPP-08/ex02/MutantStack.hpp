@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 17:10:17 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/16 17:34:32 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/16 19:08:39 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ class MutantStack : public std::stack<T>
 {
     public:
     MutantStack();
-    typedef typename std::deque<T>::iterator it;
-    typedef typename std::deque<T>::reverse_iterator rev_it;
-    it begin();
-    it end();
-    rev_it rbegin();
-    rev_it rend();
+    MutantStack(const MutantStack &obj);
+    MutantStack &operator=(const MutantStack &obj);
+    ~MutantStack();
+    typename std::deque<T>::iterator begin();
+    typename std::deque<T>::iterator end();
+    typename std::deque<T>::reverse_iterator rbegin();
+    typename std::deque<T>::reverse_iterator rend();
 };
 #include "MutantStack.tpp"

@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 22:16:26 by absaid            #+#    #+#             */
-/*   Updated: 2023/09/29 09:31:41 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/09 20:59:48 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ Cat &Cat::operator=(const Cat &obj) {
     this->type = obj.type;
     delete this->brain;
     this->brain = new Brain();
-    for (int i = 0; i < 100; i++)
-      this->brain->setidea(i, obj.brain->getidea(i));
+    *this->brain = *obj.brain;
   }
   return (*this);
 }

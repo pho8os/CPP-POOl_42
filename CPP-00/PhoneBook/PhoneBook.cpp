@@ -36,7 +36,6 @@ void set_element(void (Contact::*f)(std::string), std::string prompt,Contact &a)
 
 void set_contact(Contact &a)
 {
-	std::string line;
 	set_element(&Contact::set_FirstName,"First name : ",a);
 	set_element(&Contact::set_LastName,"Last name : ",a);
 	set_element(&Contact::set_NickName,"Nick name : ",a);

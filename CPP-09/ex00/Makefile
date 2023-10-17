@@ -1,19 +1,19 @@
-NAME		= Template
+NAME		= easyFind
 GREY 		= \033[1;30m
 CC			= c++
 FLAGS		= -Wall -Wextra -Werror -std=c++98
 OBJDIR 		= .obj
-FILES		=  main 
+FILES		=  BitcoinExchange main 
 SRC			= $(FILES:=.cpp)
 OBJ			= $(addprefix $(OBJDIR)/, $(FILES:=.o))
-HEADER		= whatever.hpp
+HEADER		= BitcoinExchange.hpp 
 
 
 all: $(NAME)
 
 $(NAME): $(OBJ) $(HEADER)
 	@$(CC) $(OBJ) -o $(NAME)
-	@echo "$(GREY) 🧪 Template!!"
+	@echo "$(GREY) 🧪 easyFind!!"
 
 $(OBJDIR)/%.o: %.cpp $(HEADER)
 	@mkdir -p $(dir $@)
@@ -26,7 +26,7 @@ clean:
 
 fclean: clean
 	@rm -rf  $(NAME)
-	@echo  "$(GREY) 👾 Deleting Template."
+	@echo  "$(GREY) 👾 Deleting easyFind."
 
 re: fclean all
 .PHONY: all clean fclean re

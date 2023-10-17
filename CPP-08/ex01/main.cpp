@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 15:31:54 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/16 17:08:27 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/16 21:34:03 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,9 @@ catch(std::exception &e)
 }
 std::cout << sp.shortestSpan() << std::endl;
 
+Span a(10000);
+for(int i = 0; i < 10000; i++)
+    a.addNumber(i);
+std::cout << a.shortestSpan() << std::endl;
+std::cout << a.longestSpan() << std::endl;
 }

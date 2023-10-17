@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 12:11:37 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/16 21:20:43 by absaid           ###   ########.fr       */
+/*   Created: 2023/10/14 11:51:33 by absaid            #+#    #+#             */
+/*   Updated: 2023/10/15 22:18:23 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "easyfind.hpp"
-#include <vector>
+#include <iostream>
 
-int main()
-{
-    int array[6] = {0 , 8, 2, 3, 4, 5};
-    std::vector<int> V ;
-    V.insert(V.begin(), std::begin(array), std::end(array));
-    std::cout << easyfind(V, 8) << std::endl;
+template <typename T, typename F> 
+void iter(T *array, int len, F func) {
+  if (!array)
+    return;
+  for (int i = 0; i < len; i++)
+    func(array[i]);
 }
