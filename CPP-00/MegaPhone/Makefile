@@ -13,12 +13,12 @@ all: $(NAME)
 
 $(NAME): $(OBJ) 
 	@$(CC) $(OBJ)  -o $(NAME)
-	@echo "$(GREEN) -- MegaPhone--"
+	@echo "$(GREEN) 🧪 MegaPhone!!"
 
 $(OBJDIR)/%.o: %.cpp 
 	@mkdir -p $(dir $@)
 	@$(CC) $(FLAGS)  -c $< -o $@
-	@echo "$(GREEN) ⏳ Setup ongoing"
+	@echo "$(GREEN) 🧬 Creating OBJS!!"
 
 clean:
 	@rm -rf $(OBJDIR) $(OBJ)
