@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:33:29 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/11 21:32:42 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/13 11:12:21 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ PresidentialPardonForm::PresidentialPardonForm(
 
 PresidentialPardonForm &
 PresidentialPardonForm::operator=(const PresidentialPardonForm &obj) {
-  (this != &obj) &&
-      (this->setSign(obj.getSign()), this->setExecGrade(obj.getExecGrade()),
-       this->setSignGrade(obj.getSignGrade()), 0);
+  (this != &obj) && (this->setSign(obj.getSign()), 0);
   return (*this);
 }
 

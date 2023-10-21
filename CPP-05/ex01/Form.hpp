@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:57:32 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/12 05:00:32 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/13 11:00:49 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ class Form {
 private:
   const std::string name;
   bool sign;
-  int signGrade;
-  int execGrade;
+  const int signGrade;
+  const int execGrade;
 public:
   Form();
   Form(const Form &obj);

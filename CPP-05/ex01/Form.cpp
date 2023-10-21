@@ -6,16 +6,14 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:39:45 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/12 05:02:37 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/13 11:01:59 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-Form::Form() : name("Default") {
+Form::Form() : name("Default"),signGrade(1), execGrade(1) {
   sign = false;
-  signGrade = 1;
-  execGrade = 1;
   std::cout << "Form : Default Constructor Called" << std::endl;
 }
 
@@ -37,8 +35,7 @@ Form::Form(const std::string &name, int signGrade, int execGrade)
 }
 
 Form &Form::operator=(const Form &obj) {
-  (this != &obj) && (this->signGrade = obj.signGrade, this->sign = obj.sign,
-                     this->execGrade = obj.execGrade);
+  (this != &obj) && (this->sign = obj.sign);
   return (*this);
 }
 

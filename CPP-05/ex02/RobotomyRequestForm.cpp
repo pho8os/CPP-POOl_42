@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 20:10:19 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/12 05:08:56 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/13 11:07:49 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &obj)
 
 RobotomyRequestForm &
 RobotomyRequestForm::operator=(const RobotomyRequestForm &obj) {
-  (this != &obj) &&
-      (this->setSign(obj.getSign()), this->setExecGrade(obj.getExecGrade()),
-       this->setSignGrade(obj.getSignGrade()), 0);
+  (this != &obj) && (this->setSign(obj.getSign()), 0);
   return (*this);
 }
 

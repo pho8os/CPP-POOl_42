@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 15:55:58 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/12 05:04:41 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/13 11:11:19 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ class AForm {
 private:
   const std::string name;
   bool sign;
-  int signGrade;
-  int execGrade;
+  const int signGrade;
+  const int execGrade;
 public:
   AForm();
   AForm(const AForm &obj);
@@ -35,9 +35,6 @@ public:
   int getSignGrade() const ;
   int getExecGrade() const ;
   int getSign() const ;
-  
-  void setSignGrade(int grade);
-  void setExecGrade(int grade);
   void setSign(bool sign);
 
 

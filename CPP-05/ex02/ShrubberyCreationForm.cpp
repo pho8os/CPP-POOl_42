@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 21:30:30 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/11 22:42:54 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/13 11:10:43 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &obj)
 
 ShrubberyCreationForm &
 ShrubberyCreationForm::operator=(const ShrubberyCreationForm &obj) {
-  (this != &obj) &&
-      (this->setSign(obj.getSign()), this->setExecGrade(obj.getExecGrade()),
-       this->setSignGrade(obj.getSignGrade()), 0);
+  (this != &obj) && (this->setSign(obj.getSign()), 0);
   return (*this);
 }
 
@@ -33,7 +31,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
   if (executor.getGrade() <= this->getExecGrade()) {
-    std::cout << "Shrubbery Created: check the file";
+    std::cout << "Shrubbery Created: check the file" << std::endl;
     if(!std::freopen((executor.getName() + "_shrubbery").c_str(), "w+", stdout))
         return(std::cerr << "Error" << std::endl, (void)0);
     std::cout << "       _-_" << std::endl;

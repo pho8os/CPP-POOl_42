@@ -12,10 +12,8 @@
 
 #include "AForm.hpp"
 
-AForm::AForm() : name("Default") {
+AForm::AForm() : name("Default"), signGrade(1), execGrade(1) {
   sign = false;
-  signGrade = 1;
-  execGrade = 1;
   // std::cout << "AForm : Default Constructor Called" << std::endl;
 }
 
@@ -37,8 +35,7 @@ AForm::AForm(const std::string &name, int signGrade, int execGrade)
 }
 
 AForm &AForm::operator=(const AForm &obj) {
-  (this != &obj) && (this->signGrade = obj.signGrade, this->sign = obj.sign,
-                     this->execGrade = obj.execGrade);
+  (this != &obj) && (this->sign = obj.sign);
   return (*this);
 }
 
@@ -56,10 +53,6 @@ int AForm::getExecGrade() const { return (this->execGrade); }
 bool AForm::getSign() const { return (this->sign); }
 
 int AForm::getSignGrade() const { return (this->signGrade); }
-
-void AForm::setExecGrade(int grade) { this->execGrade = grade; }
-
-void AForm::setSignGrade(int grade) { this->signGrade = grade; }
 
 void AForm::setSign(bool sign) { this->sign = sign; }
 
