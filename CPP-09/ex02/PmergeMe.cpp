@@ -6,11 +6,12 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 16:26:28 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/21 16:03:12 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/22 11:38:31 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+#include <algorithm>
 #include <climits>
 #include <string>
 #include <utility>
@@ -25,63 +26,141 @@ bool digitis(std::string &s) {
   return true;
 }
 
-void thefuncVec(std::string s) {
+void thefuncVec(int ac, char **av) {
   std::vector<int> thevec;
-  int theodd = -1;
-  char *p = std::strtok((char *)s.c_str(), " ");
-  if (!p)
-    throw(std::runtime_error("error: Empty argument!"));
-  while (p) {
-    std::string ss(p);
-    if (!digitis(ss))
-      throw(std::runtime_error("\"" + ss + "\" : Invalid parameter!"));
-    thevec.push_back(std::atoi(ss.c_str()));
-    p = std::strtok(NULL, " ");
+  thevec.reserve(ac);
+  char *ptr = NULL;
+  if ((ac) % 2) {
+    ptr = av[ac - 1];
+    ac--;
   }
-  (thevec.size() % 2 == 1) &&
-      (theodd = *(thevec.end() - 1), thevec.pop_back(), 0);
-  std::vector<std::pair<int, int> > pairs;
-  for (std::vector<int>::iterator it = thevec.begin(); it < thevec.end(); //merge sort start
-       it += 2)
-    pairs.push_back(std::make_pair(*it, *(it + 1)));
-  for (std::vector<std::pair<int, int> >::iterator it = pairs.begin();
-       it < pairs.end(); it++)
-    if (it->first < it->second)
-      std::swap(it->first, it->second);
-  for (int i = 1; i < (int)pairs.size(); ++i) { // insertion sort
-    std::pair<int, int> current = pairs[i];
-    int j = i - 1;
-    while (j >= 0 && current.first < pairs[j].first) {
-      pairs[j + 1] = pairs[j];
-      --j;
+  for (int i = 0; i < ac; i += 2) {
+    std::string s1(av[i]);
+    std::string s2(av[i + 1]);
+    if (!digitis(s1))
+      throw(std::runtime_error("\"" + s1 + "\" : Invalid parameter!"));
+    if (!digitis(s2))
+      throw(std::runtime_error("\"" + s2 + "\" : Invalid parameter!"));
+    int first = std::atoi(s1.c_str());
+    int second = std::atoi(s2.c_str());
+    if (first < second)
+      std::swap(first, second);
+    thevec.push_back(first);
+    thevec.push_back(second);
+  }
+  for (int i = 2; i < (int)thevec.size(); i += 2) {
+    int j = i - 2;
+    while (j >= 0 && thevec[j + 2] < thevec[j]) {
+      std::swap(thevec[j + 2], thevec[j]);
+      std::swap(thevec[j + 3], thevec[j + 1]);
+      j -= 2;
     }
-    pairs[j + 1] = current;
   }
-  std::vector<int> mainvec;
-  std::vector<int> chainvec;
-  for (std::vector<std::pair<int, int> >::iterator it = pairs.begin();
-       it < pairs.end(); it++) {
-    mainvec.push_back(it->first);
-    chainvec.push_back(it->second);
+  std::vector<int> pendvec;
+  for (int i = 1; i < (int)thevec.size(); i++) {
+    pendvec.push_back(thevec[i]);
+    thevec.erase(thevec.begin() + i);
   }
-  mainvec.insert(mainvec.begin(), chainvec[0]);
-  int a = 0, b = 1;
-  int next = a * 2 + b;
-  int size = chainvec.size();
-  for (int i = 0; ; i++) {
-    a = b;
-    b = next;
-    next = a * 2 + b;
-    for (int j = next ; j > b ; j--) {
-      if (j <= size)
-        mainvec.insert(mainvec.begin() + bsi(mainvec, chainvec[j - 1]), chainvec[j - 1]);
+  thevec.insert(thevec.begin(), pendvec[0]);
+  {
+    int a = 0, b = 1;
+    int next = a * 2 + b;
+    int size = pendvec.size();
+    for (int i = 0; ; i++) {
+      a = b;
+      b = next;
+      next = a * 2 + b;
+      if(next > size)
+        next = size;
+      for (int j = next; j > b; j--) {
+        if (j <= size) {
+          thevec.insert(
+              std::lower_bound(thevec.begin(), thevec.end(), pendvec[j - 1]),
+              pendvec[j - 1]);
+        }
+      }
+      if (next >= size)
+        break;
     }
-    if (next > size)
-      break;
   }
-  if(theodd >= 0)
-    mainvec.insert(mainvec.begin() + bsi(mainvec, theodd), theodd);
-  for (std::vector<int>::iterator it = mainvec.begin(); it < mainvec.end(); it++)
+  if (ptr) {
+    std::string s(ptr);
+    if (!digitis(s))
+      throw(std::runtime_error("\"" + s + "\" : Invalid parameter!"));
+    int theodd = std::atoi(s.c_str());
+    thevec.insert(std::lower_bound(thevec.begin(), thevec.end(), theodd),
+                  theodd);
+  }
+  for (std::vector<int>::iterator it = thevec.begin(); it < thevec.end(); it++)
+    std::cout << *it << " \t";
+  std::cout << std::endl;
+}
+
+void thefuncDeque(int ac, char **av) {
+  std::deque<int> thedeque;
+  char *ptr = NULL;
+  if ((ac) % 2) {
+    ptr = av[ac - 1];
+    ac--;
+  }
+  for (int i = 0; i < ac; i += 2) {
+    std::string s1(av[i]);
+    std::string s2(av[i + 1]);
+    if (!digitis(s1))
+      throw(std::runtime_error("\"" + s1 + "\" : Invalid parameter!"));
+    if (!digitis(s2))
+      throw(std::runtime_error("\"" + s2 + "\" : Invalid parameter!"));
+    int first = std::atoi(s1.c_str());
+    int second = std::atoi(s2.c_str());
+    if (first < second)
+      std::swap(first, second);
+    thedeque.push_back(first);
+    thedeque.push_back(second);
+  }
+  for (int i = 2; i < (int)thedeque.size(); i += 2) {
+    int j = i - 2;
+    while (j >= 0 && thedeque[j + 2] < thedeque[j]) {
+      std::swap(thedeque[j + 2], thedeque[j]);
+      std::swap(thedeque[j + 3], thedeque[j + 1]);
+      j -= 2;
+    }
+  }
+  std::deque<int> pendvec;
+  for (int i = 1; i < (int)thedeque.size(); i++) {
+    pendvec.push_back(thedeque[i]);
+    thedeque.erase(thedeque.begin() + i);
+  }
+  thedeque.insert(thedeque.begin(), pendvec[0]);
+  {
+    int a = 0, b = 1;
+    int next = a * 2 + b;
+    int size = pendvec.size();
+    for (int i = 0; ; i++) {
+      a = b;
+      b = next;
+      next = a * 2 + b;
+      if(next > size)
+        next = size;
+      for (int j = next; j > b; j--) {
+        if (j <= size) {
+          thedeque.insert(
+              std::lower_bound(thedeque.begin(), thedeque.end(), pendvec[j - 1]),
+              pendvec[j - 1]);
+        }
+      }
+      if (next >= size)
+        break;
+    }
+  }
+  if (ptr) {
+    std::string s(ptr);
+    if (!digitis(s))
+      throw(std::runtime_error("\"" + s + "\" : Invalid parameter!"));
+    int theodd = std::atoi(s.c_str());
+    thedeque.insert(std::lower_bound(thedeque.begin(), thedeque.end(), theodd),
+                  theodd);
+  }
+  for (std::deque<int>::iterator it = thedeque.begin(); it < thedeque.end(); it++)
     std::cout << *it << " \t";
   std::cout << std::endl;
 }
