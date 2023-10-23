@@ -6,20 +6,14 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 06:51:45 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/20 13:43:09 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/23 13:58:27 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
+#include <stdexcept>
 
 std::map<std::string, double> BitcoinExchange::data;
-BitcoinExchange::BitcoinExchange() {}
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &obj) { *this = obj; }
-BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &obj) {
-  (void)obj;
-  return *this;
-}
-BitcoinExchange::~BitcoinExchange() {}
 
 bool isNumber(std::string s) {
   bool comma = false;
@@ -46,11 +40,11 @@ bool isNumber(std::string s) {
 bool is_valid_date(std::string date) {
   int year, month, day;
   std::string s = date.substr(0, 4);
-  if (!isNumber(s))
+  if (!isNumber(s) || date[4] != '-')
     return false;
   year = std::stoi(s);
   s = date.substr(5, 2);
-  if (!isNumber(s))
+  if (!isNumber(s) || date[7] != '-')
     return false;
   month = std::stoi(s);
   s = date.substr(8, 2);
@@ -102,6 +96,8 @@ std::map<std::string, double> parsedata(std::string file) {
   while (!std::cin.eof() && std::getline(std::cin, line)) {
     if (line.empty())
       continue;
+    if(line.find(",") != line.rfind(",") || line[10] != ',' || line.find(" ") != std::string::npos)
+      throw std::runtime_error(line + " invalid data parse");
     std::string *str = splitdata(line, ",");
     data.insert(std::make_pair(std::string(str[0]), std::stod(str[1])));
     delete[] str;

@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 06:51:48 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/20 13:43:41 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/23 13:03:07 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ int main(int ac, char **av) {
   while (std::getline(std::cin, line)) {
     if (line.empty())
       continue;
+    else if(line.find("|") != line.rfind("|") || line[11] != '|')
+    {
+        std::cout << line +  " : input error!" << std::endl;
+        continue;
+    }
     try {
       std::string *str = splitdata(line, "|");
       if (std::atof(str[1].c_str()) >= 1001) {

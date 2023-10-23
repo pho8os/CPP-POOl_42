@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 06:51:42 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/20 15:15:32 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/23 13:58:19 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@
 class BitcoinExchange
 {
     private:
-    public:
-        static std::map<std::string,double> data;
         BitcoinExchange();
         BitcoinExchange(const BitcoinExchange &obj);
         BitcoinExchange &operator=(const BitcoinExchange &obj);
         ~BitcoinExchange();
+    public:
+        static std::map<std::string,double> data;
         static double getprice(std::string date);
 };
 std::map<std::string, double> parsedata(std::string file);

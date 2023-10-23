@@ -1,7 +1,6 @@
 NAME		= PmergeMe
-GREY 		= \033[1;30m
 CC			= c++
-FLAGS		= -Wall -Wextra -Werror -fsanitize=address -g -std=c++98 
+FLAGS		= -Wall -Wextra -Werror  -std=c++98 
 OBJDIR 		= .obj
 FILES		=  PmergeMe main 
 SRC			= $(FILES:=.cpp)
@@ -12,21 +11,21 @@ HEADER		= PmergeMe.hpp
 all: $(NAME)
 
 $(NAME): $(OBJ) $(HEADER)
-	@$(CC) $(OBJ) -o $(NAME)  -fsanitize=address -g
-	@echo "$(GREY) 🧪 PmergeMe!!"
+	@$(CC) $(OBJ) -o $(NAME) 
+	@echo "🧪 PmergeMe!!"
 
 $(OBJDIR)/%.o: %.cpp $(HEADER)
 	@mkdir -p $(dir $@)
-	@$(CC) $(FLAGS) -c $< -o $@
-	@echo "$(GREY) 🧬 Creating OBJS!!"
+	@$(CC) $(FLAGS) -c $< -o $@ 
+	@echo " 🧬 Creating OBJS!!"
 
 clean:
 	@rm -rf $(OBJDIR) $(OBJ)
-	@echo  "$(GREY) 🔥 Deleting OBJS."
+	@echo  "🔥 Deleting OBJS."
 
 fclean: clean
 	@rm -rf  $(NAME)
-	@echo  "$(GREY) 👾 Deleting PmergeMe."
+	@echo  " 👾 Deleting PmergeMe."
 
 re: fclean all
 .PHONY: all clean fclean re

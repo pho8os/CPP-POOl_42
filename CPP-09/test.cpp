@@ -25,39 +25,38 @@ using namespace std;
 // }
 
 int main() {
-  // int a = 0, b = 1;
-  // int next = a * 2 + b;
-  // int size = 60;
-  // for (int i = 0; i < 10; i++) {
-  //   a = b;
-  //   b = next;
-  //   next = a * 2 + b;
-  //   cout << next << endl;
-  //   for (int j = next; j > b; j--) {
-  //     if (j <= size)
-  //       cout << "=>" << j << "\t";
-  //   }
-  //   cout << endl;
-  //   if (next > size)
-  //     break;
-  // }
-  int tab[] = {6, 5, 4, 1, 9, 8, 3, 2, -1, -2};
-  
-  for (int i = 2; i < 10; i += 2) {
-
-    int j = i - 2;
-
-    while (j >= 0 && tab[j + 2] < tab[j])
-    {
-      swap(tab[j + 2 ], tab[j]);
-      swap(tab[j + 2 + 1], tab[j + 1]);
-      j -= 2;
+  int a = 0, b = 1;
+  int next = a * 2 + b;
+  int size = 10000;
+  for (int i = 0; next < size; i++) {
+    a = b;
+    b = next;
+    next = a * 2 + b;
+    cout << next << endl;
+    if(next > size)
+      next = size;
+    for (int j = next; j > b; j--) {
+        cout << "=>" << j << "\t";
     }
+    cout << endl;
+  }
+//   int tab[] = {6, 5, 4, 1, 9, 8, 3, 2, -1, -2};
+  
+//   for (int i = 2; i < 10; i += 2) {
 
-  }
-  for(int i = 0; i < 10; i++)
-  {
-    cout << tab[i] << " \t";
-  }
-  cout << "\n";
+//     int j = i - 2;
+
+//     while (j >= 0 && tab[j + 2] < tab[j])
+//     {
+//       swap(tab[j + 2 ], tab[j]);
+//       swap(tab[j + 2 + 1], tab[j + 1]);
+//       j -= 2;
+//     }
+
+//   }
+//   for(int i = 0; i < 10; i++)
+//   {
+//     cout << tab[i] << " \t";
+//   }
+//   cout << "\n";
 }
