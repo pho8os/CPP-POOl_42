@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 06:39:47 by absaid            #+#    #+#             */
-/*   Updated: 2023/09/17 06:31:44 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/24 10:57:36 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ DiamondTrap::DiamondTrap() : ClapTrap("Default_clap_name") {
   std::cout << "DiamondTrap : Default Constructor Called" << std::endl;
   this->Name = "Default";
   this->HitPoints = FragTrap::HitPoints;
-  this->EnergyPoints = ScavTrap::EnergyPoints;
+  this->EnergyPoints = 50;
   this->Attackdmg = FragTrap::Attackdmg;
 }
 
@@ -26,7 +26,7 @@ DiamondTrap::DiamondTrap(std::string Name) : ClapTrap(Name + "_clap_name") {
   std::cout << "DiamondTrap : Name Constructor Called" << std::endl;
   this->Name = Name;
   this->HitPoints = FragTrap::HitPoints;
-  this->EnergyPoints = ScavTrap::EnergyPoints;
+  this->EnergyPoints = 50;
   this->Attackdmg = FragTrap::Attackdmg;
 }
 

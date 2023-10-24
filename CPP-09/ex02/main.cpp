@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 15:01:41 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/23 13:40:08 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/24 10:55:38 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int main(int ac, char **av) {
     std::cout << "\n" << std::endl;
     std::cout << "Time to process a range of " << ac - 1 << " elements with std::vector : " << std::fixed << a << std::endl;
     std::cout << "Time to process a range of " << ac - 1 << " elements with std::deque : " << std::fixed << b << std::endl;
-    while(1);
   } catch (std::exception &e) {
     std::cout << e.what() << std::endl;
   }
