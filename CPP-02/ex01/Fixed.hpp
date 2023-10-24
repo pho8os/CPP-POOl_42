@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:05:40 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/11 23:04:10 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/24 10:51:04 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,3 @@ class Fixed
         int toInt() const;
 };
 std::ostream &operator<<(std::ostream &output, const Fixed &obj);
-
-Fixed a, b;
-
-a = b = c = d;

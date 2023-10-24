@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 12:41:16 by absaid            #+#    #+#             */
-/*   Updated: 2023/09/11 15:28:29 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/24 10:50:58 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ Fixed::Fixed(const int var)
 }
 Fixed::Fixed(const float var)
 {
-    _fixed = roundf( var * std::pow(2, fracts));
+    _fixed = roundf( var * (1 << fracts));
 }
 int Fixed::getRawBits( void ) const
 {
@@ -62,6 +62,6 @@ int Fixed::toInt() const
 
 float Fixed::toFloat() const
 {
-    return((float)_fixed * std::pow(2, fracts * -1));
+    return((float)_fixed / (1 << fracts));
 }
 

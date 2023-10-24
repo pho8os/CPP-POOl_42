@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 12:41:16 by absaid            #+#    #+#             */
-/*   Updated: 2023/09/13 18:49:06 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/24 10:52:34 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ std::ostream &operator<<(std::ostream &output, const Fixed &obj) {
 
 Fixed::Fixed(const int var) { _fixed = var << fracts; }
 
-Fixed::Fixed(const float var) { _fixed = roundf(var * (1 << 8)); }
+Fixed::Fixed(const float var) { _fixed = roundf(var * (1 << fracts)); }
 
 int Fixed::getRawBits(void) const { return (this->_fixed); }
 
@@ -98,7 +98,7 @@ void Fixed::setRawBits(int const raw) { _fixed = raw; }
 int Fixed::toInt() const { return (_fixed >> fracts); }
 
 float Fixed::toFloat() const {
-  return ((float)_fixed / (1 << 8));
+  return ((float)_fixed / (1 << fracts));
 }
 
 Fixed &Fixed::max(Fixed &a, Fixed &b) { return ((a > b) ? a : b); }
