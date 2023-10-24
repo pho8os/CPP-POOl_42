@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 06:51:45 by absaid            #+#    #+#             */
-/*   Updated: 2023/10/23 13:58:27 by absaid           ###   ########.fr       */
+/*   Updated: 2023/10/24 10:55:06 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ bool is_valid_date(std::string date) {
   if (year < 2009 || month < 1 || month > 12 || day < 1 || day > 31)
     return false;
   if (month == 2 && day >= 29) {
-    if (year % 4 || !(year % 100 == year % 400))
+    if (year % 4 && year % 100 == year % 400)
       return false;
   }
   if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30) {
